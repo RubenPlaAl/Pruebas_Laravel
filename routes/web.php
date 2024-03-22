@@ -22,11 +22,22 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/store', function () {
+    return view('store');
+})->middleware(['auth', 'verified'])->name('store');
+
+Route::get('/forum', function () {
+    return view('forum');
+})->middleware(['auth', 'verified'])->name('forum');
+
+Route::get('/homepage', function () {
+    return view('homepage');
+})->middleware(['auth', 'verified'])->name('homepage');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-   
 });
-Route::post('/profile' ,  [ProfileController::class, 'image_update'])->name('profile.image');
-require __DIR__.'/auth.php';
+Route::post('/profile',  [ProfileController::class, 'image_update'])->name('profile.image');
+require __DIR__ . '/auth.php';
