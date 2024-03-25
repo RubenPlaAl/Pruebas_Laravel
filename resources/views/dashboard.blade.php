@@ -31,9 +31,9 @@
             @if (auth()->user()->image)
             <x-input-label for="image" :value="__('Foto De Perfil')" class="text-center" />
             <div class="text-center">
-                <?php
-                echo asset('storage/app/users/' . auth()->user()->image);
-                ?>
+                
+                <img src="users/{{auth()->user()->image}}" >
+              
             </div>
             @endif
             <x-input-error class="mt-2" :messages="$errors->get('image')" />
