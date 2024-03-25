@@ -27,16 +27,19 @@
                 </div>
             </div>
         </div>
-        <div class="form-group">
-            @if (auth()->user()->image)
-            <x-input-label for="image" :value="__('Foto De Perfil')" class="text-center" />
-            <div class="text-center">
-                <?php
-                echo asset('storage/app/users/' . auth()->user()->image);
-                ?>
+        <div class="form-group max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900 text-center dark:text-gray-100">
+
+                    @if (auth()->user()->image)
+                    <x-input-label for="image" :value="__('Foto De Perfil')" class="text-center" />
+                    <div class="text-center col-sm-4">
+                <img src="users/{{auth()->user()->image}}" class="rounded-circle mx-auto d-block mt-2" style="height: 150px">
+                    </div>
+                    @endif
+                    <x-input-error class="mt-2" :messages="$errors->get('image')" />
+                </div>
             </div>
-            @endif
-            <x-input-error class="mt-2" :messages="$errors->get('image')" />
         </div>
 
 
