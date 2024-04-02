@@ -8,8 +8,8 @@
             {{ __("Update your account's profile avatar picture.") }}
         </p>
     </header>
-
-  
+ 
+        @include('includes.avatar')
 
     <form method="post" action="{{ route('profile.image') }}" enctype="multipart/form-data" class="mt-6 space-y-6">
     @csrf

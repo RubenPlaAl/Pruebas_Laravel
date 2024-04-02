@@ -34,7 +34,7 @@
                     @if (auth()->user()->image)
                     <x-input-label for="image" :value="__('Foto De Perfil')" class="text-center" />
                     <div class="text-center col-sm-4">
-                <img src="users/{{auth()->user()->image}}" class="rounded-circle mx-auto d-block mt-2" style="height: 150px">
+                <img src="users/{{auth()->user()->image}}" class="rounded  mx-auto  mt-2" style="height: 150px">
                     </div>
                     @endif
                     <x-input-error class="mt-2" :messages="$errors->get('image')" />

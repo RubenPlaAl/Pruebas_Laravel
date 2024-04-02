@@ -4,14 +4,31 @@
             {{ __('Forum') }}
         </h2>
     </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("You're in the forum!") }}
-                </div>
+    <div class="py-12 max-w-7xl mx-auto sm:px-6 lg:px-8 flex justify-between" style="background-image: url('/storage/Fondo-Foro.jpg'); background-size: cover; background-position: center;">
+    <div class="w-1/2 mx-4">
+        <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="p-6 text-gray-900 dark:text-gray-100 text-center">
+                <p class="mb-6">¿Quieres subir un Tema?</p>
+                <x-nav-link :href="route('image.create')" :active="request()->routeIs('forum')" class="inline-block bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600">
+                    {{ __('Subir Tema') }}
+                </x-nav-link>
             </div>
         </div>
     </div>
+
+    <div class="w-1/2 mx-4">
+        <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="p-6 text-gray-900 dark:text-gray-100 text-center">
+                <p class="mb-6">¿Quieres ver los temas del foro?</p>
+                <x-nav-link :href="route('image.show')" :active="request()->routeIs('forum')" class="inline-block bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600">
+                    {{ __('Ir a los Temas') }}
+                </x-nav-link>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
 </x-app-layout>

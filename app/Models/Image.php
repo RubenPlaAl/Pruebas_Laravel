@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Image extends Model
 {
+    use HasFactory;
+    protected $fillable = ['image','description'];
+
+
     protected $table = 'images';
 
     public function comments(){

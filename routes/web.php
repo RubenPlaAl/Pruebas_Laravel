@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CommentController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,3 +44,12 @@ Route::middleware('auth')->group(function () {
 });
 Route::post('/profile',  [ProfileController::class, 'image_update'])->name('profile.image');
 require __DIR__ . '/auth.php';
+
+
+Route::get('/imagen', [ImageController::class, 'create'])->name('image.create');
+Route::post('/image/save',  [ImageController::class, 'save'])->name('image.save');
+Route::get('/show', [ImageController::class, 'show'])->name('image.show');
+Route::get('/image/file/{filename}', [ImageController::class, 'getImage'])->name('image.file');
+Route::get('/detail/{id}', [ImageController::class, 'detail'])->name('image.detail');
+
+Route::post('/comment/save',  [CommentController::class, 'save'])->name('comment.save');
