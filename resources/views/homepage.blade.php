@@ -66,21 +66,17 @@
                     <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mt-4">Plar Hub</h1>
                     <p class="text-lg text-gray-900 dark:text-gray-100 mb-4">Bienvenido a Plar Hub, la mejor página para enterarte de todas las novedades del Mundo de los Videojuegos, además de poder comprar cualquier juego cómodamente desde nuestra tienda. Todo lo que necesitas en un mismo lugar.</p>
                     <div class="mt-4">
-                        <a href="{{ route('forum') }}" class="inline-block bg-blue-500 text-white py-3 px-6 rounded-lg mr-4 hover:bg-blue-600">Ir al Foro</a>
-                        <a href="{{ route('store') }}" class="inline-block bg-blue-500 text-white border border-gray-500 py-3 px-6 rounded-lg hover:bg-gray-200 text-black">Ir a Tienda</a>
-                    </div>
+                    <a href="{{route('forum')}}" :active="request()->routeIs('store')" class="btn10">
+                        <span>Ir al Foro</span>
+                        <div class="transition"></div>
+                    </a>                        <a href="{{route('store')}}" :active="request()->routeIs('store')" class="btn10">
+                        <span>Ir a la tienda</span>
+                        <div class="transition"></div>
+                    </a>                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("You're in the Home Page!") }}
-                </div>
-            </div>
-        </div>
-    </div>
+
 </x-app-layout>

@@ -1,6 +1,6 @@
 <div class="image-avatar">
 @if (auth()->user()->image)  
-<img src="users/{{auth()->user()->image}}" class="rounded  mx-auto  mt-2" style="height: 150px">
+<img src="users/{{Auth::user()->image}}" class="rounded  mx-auto  mt-2" style="height: 150px">
 @endif
 </div>
 

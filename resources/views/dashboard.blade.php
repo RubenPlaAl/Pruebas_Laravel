@@ -1,12 +1,12 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
-    <div class="py-12">
+    @include('includes.mensaje')
+
+    <div class="py-12" style="background-image: url('./storage/Fondo-dashboard.jpg'); background-size: cover; background-position: center; min-height: 100vh;">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 text-center dark:text-gray-100">
@@ -14,121 +14,145 @@
                     @if(auth()->user()->role === 'admin')
                     <div>
                         <!-- Contenido exclusivo para administradores -->
-                        Bienvenido, Administrador.<br>
-                        <i class="bi bi-person-fill text-white"></i>
+                        <h2 class="text-2xl font-semibold">Bienvenido, Administrador.</h2><br>
                     </div>
                     @else
                     <div>
                         <!-- Contenido para usuarios normales -->
-                        Bienvenido, {{ auth()->user()->name }}.
+                        <h2 class="text-2xl font-semibold">Bienvenido, {{ auth()->user()->name }}.</h2>
                     </div>
                     @endif
                     @endif
                 </div>
             </div>
         </div>
-        <div class="form-group max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 text-center dark:text-gray-100">
 
-                    @if (auth()->user()->image)
-                    <x-input-label for="image" :value="__('Foto De Perfil')" class="text-center" />
-                    <div class="text-center col-sm-4">
-                <img src="users/{{auth()->user()->image}}" class="rounded  mx-auto  mt-2" style="height: 150px">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 px-4 py-5 my-5">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg menu">
+                <div class="p-4 text-center dark:text-gray-100">
+                    <div class="icon bg-primary bg-gradient p-4 rounded-t-lg">
+                        <i class="bi bi-chat-square-fill text-white text-3xl"></i>
                     </div>
-                    @endif
-                    <x-input-error class="mt-2" :messages="$errors->get('image')" />
-                </div>
-            </div>
-        </div>
-
-
-
-
-        <div class="px-4 py-5 my-5 text-center bg-white dark:bg-gray-800">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 flex flex-col items-center">
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200 mx-auto" />
+                    <h2 class="text-xl font-semibold mt-4">Favoritos del Foro</h2>
+                    <p class="mt-2 mb-5">Ir a los Temas que te interesan y revisar las opiniones de los demás.</p>
+                    <a href="{{ route('likes') }}" class="btn btn-primary">Ir <i class="bi bi-chevron-compact-right"></i>
+                        <span class="border border-top"></span>
+                        <span class="border border-right"></span>
+                        <span class="border border-bottom"></span>
+                        <span class="border border-left"></span>
                     </a>
                 </div>
-                <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mt-4">Plar Hub</h1>
-                <p class="text-lg text-gray-900 dark:text-gray-100 mb-4">Bienvenido a Plar Hub, la mejor página para enterarte de todas las novedades del Mundo de los Videojuegos, además de poder comprar cualquier juego cómodamente desde nuestra tienda. Todo lo que necesitas en un mismo lugar.</p>
-                <div class="mt-4">
-                    <a href="{{ route('forum') }}" class="inline-block bg-blue-500 text-white py-3 px-6 rounded-lg mr-4 hover:bg-blue-600">Ir al Foro</a>
-                    <a href="{{ route('store') }}" class="inline-block bg-blue-500 text-white border border-gray-500  py-3 px-6 rounded-lg hover:bg-gray-200 text-black">Ir a Tienda</a>
+            </div>
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg menu">
+                <div class="p-4 text-center dark:text-gray-100">
+                    <div class="icon bg-primary bg-gradient p-4 rounded-t-lg">
+                        <i class="bi bi-people-fill text-white text-3xl"></i>
+                    </div>
+                    <h2 class="text-xl font-semibold mt-4">Gente</h2>
+                    <p class="mt-2 mb-5">Aquí puedes buscar otras personas.</p>
+                    <a href="{{ route('profile.index') }}" class="btn btn-primary">Ir <i class="bi bi-chevron-compact-right"></i>
+                        <span class="border border-top"></span>
+                        <span class="border border-right"></span>
+                        <span class="border border-bottom"></span>
+                        <span class="border border-left"></span>
+                    </a>
                 </div>
             </div>
-        </div>
-
-        <div class="px-4 py-5 my-5 dark:bg-gray-800">
-            <h2 class="pb-2 border-bottom text-center text-gray-900 dark:text-gray-100 text-2xl">¿Que vas a hacer?</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 py-5">
-                <div class="bg-primary bg-gradient rounded-lg p-4 text-center text-gray-900 dark:text-gray-100">
-                    <div class="icon bg-black p-2 rounded-full">
-                        <i class="bi bi-chat-square-fill text-white"></i>
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg menu">
+                <div class="p-4 text-center dark:text-gray-100">
+                    <div class="icon bg-primary bg-gradient p-4 rounded-t-lg">
+                        <i class="bi bi-person-fill text-white text-3xl"></i>
                     </div>
-                    <h2 class="mt-2">Foro</h2>
-                    <p class="mt-2 mb-5 h-20">Disfruta de nuestro foro, habla con otros usuarios y enterate de todas las novedades</p>
-                    <a href="{{ route('forum') }}" class="icon-link mt-2">Ir <i class="bi bi-chevron-compact-right"></i></a>
-                </div>
-                <div class="bg-primary bg-gradient rounded-lg p-4 text-center text-gray-900 dark:text-gray-100">
-                    <div class="icon bg-black p-2 rounded-full">
-                        <i class="bi bi-bag-fill"></i>
-                    </div>
-                    <h2 class="mt-2">Tienda</h2>
-                    <p class="mt-2 mb-5 h-20">Si ya sabes lo que quieres, simplemente ve a comprarlo en nuestra tienda y disfrutalo</p>
-                    <a href="{{ route('store') }}" class="icon-link mt-2">Ir <i class="bi bi-chevron-compact-right"></i></a>
-                </div>
-                <div class="bg-primary bg-gradient rounded-lg p-4 text-center text-gray-900 dark:text-gray-100">
-                    <div class="icon bg-black p-2 rounded-full">
-                        <i class="bi bi-person-fill"></i>
-                    </div>
-                    <h2 class="mt-2">Perfil</h2>
-                    <p class="mt-2 mb-5 h-20">Actualiza tu perfil, para que todo el mundo lo vea.</p>
-                    <a href="{{ route('profile.edit') }}" class="icon-link mt-2">Ir <i class="bi bi-chevron-compact-right"></i></a>
+                    <h2 class="text-xl font-semibold mt-4">Perfil</h2>
+                    <p class="mt-2 mb-5">Aquí está tu perfil personal.</p>
+                    <a href="{{ route('perfil', ['id' => Auth::user()->id]) }}" class="btn btn-primary">Ir <i class="bi bi-chevron-compact-right"></i>
+                        <span class="border border-top"></span>
+                        <span class="border border-right"></span>
+                        <span class="border border-bottom"></span>
+                        <span class="border border-left"></span>
+                    </a>
                 </div>
             </div>
         </div>
         @if(auth()->check() && auth()->user()->role === 'admin')
-        <div class="px-4 py-5 my-5 dark:bg-gray-800">
-            <h2 class="pb-2 border-bottom text-center text-gray-900 dark:text-gray-100 text-2xl">Opciones de Administrador</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 py-5">
-                <div class="bg-primary bg-gradient rounded-lg p-4 text-center text-gray-900 dark:text-gray-100">
-                    <div class="icon bg-black p-2 rounded-full">
-                        <i class="bi bi-plus-circle-fill text-white"></i>
+
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg menu">
+                <div class="p-6 text-gray-900 text-center dark:text-gray-100">
+                    @if(auth()->user()->role === 'admin')
+                    <div>
+                        <h2 class="text-2xl font-semibold">Opciones de Administrador</h2>
                     </div>
-                    <h2 class="mt-2">Agregar Producto</h2>
-                    <p class="mt-2 mb-5">Añadir nuevos productos al catálogo.</p>
-                    <a href="#" class="icon-link mt-2">Ir <i class="bi bi-chevron-compact-right"></i></a>
-                </div>
-                <div class="bg-primary bg-gradient rounded-lg p-4 text-center text-gray-900 dark:text-gray-100">
-                    <div class="icon bg-black p-2 rounded-full">
-                        <i class="bi bi-trash-fill"></i>
-                    </div>
-                    <h2 class="mt-2">Eliminar Comentario</h2>
-                    <p class="mt-2 mb-5">Eliminar comentarios inapropiados o spam.</p>
-                    <a href="#" class="icon-link mt-2">Ir <i class="bi bi-chevron-compact-right"></i></a>
-                </div>
-                <div class="bg-primary bg-gradient rounded-lg p-4 text-center text-gray-900 dark:text-gray-100">
-                    <div class="icon bg-black p-2 rounded-full">
-                        <i class="bi bi-person-x-fill"></i>
-                    </div>
-                    <h2 class="mt-2">Borrar Perfil</h2>
-                    <p class="mt-2 mb-5">Eliminar perfiles de usuarios no deseados.</p>
-                    <a href="#" class="icon-link mt-2">Ir <i class="bi bi-chevron-compact-right"></i></a>
-                </div>
-                <div class="bg-primary bg-gradient rounded-lg p-4 text-center text-gray-900 dark:text-gray-100">
-                    <div class="icon bg-black p-2 rounded-full">
-                        <i class="bi bi-eye-fill"></i>
-                    </div>
-                    <h2 class="mt-2">Ver Visitas</h2>
-                    <p class="mt-2 mb-5">Ver estadísticas de visitas al sitio web.</p>
-                    <a href="#" class="icon-link mt-2">Ir <i class="bi bi-chevron-compact-right"></i></a>
+                    @endif
                 </div>
             </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 px-4 py-5 my-5">
+                <div class="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm sm:rounded-lg menu">
+                    <div class="p-4 text-center text-gray-900 dark:text-gray-100">
+                        <div class="icon bg-primary bg-gradient p-2 rounded-full">
+                            <i class="bi bi-plus-circle-fill text-white text-3xl"></i>
+                        </div>
+                        <h2 class="text-xl font-semibold mt-2">Agregar Productos</h2>
+                        <p class="mt-2 mb-5">Añadir nuevos productos al catálogo de la tienda.</p>
+                        <a href="{{ route('store.crear')}}" class="btn btn-primary">Ir <i class="bi bi-chevron-compact-right"></i>
+                            <span class="border border-top"></span>
+                            <span class="border border-right"></span>
+                            <span class="border border-bottom"></span>
+                            <span class="border border-left"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm sm:rounded-lg menu">
+                    <div class="p-4 text-center text-gray-900 dark:text-gray-100">
+                        <div class="icon bg-primary bg-gradient p-2 rounded-full">
+                            <i class="bi bi-trash-fill text-white text-3xl"></i>
+                        </div>
+                        <h2 class="text-xl font-semibold mt-2">Eliminar Publicaciones o Comentarios</h2>
+                        <p class="mt-2 mb-5">Eliminar publicaciones o comentarios inapropiados o spam.</p>
+                        <a href="{{ route('image.show') }}" class="btn btn-primary">Ir <i class="bi bi-chevron-compact-right"></i>
+                            <span class="border border-top"></span>
+                            <span class="border border-right"></span>
+                            <span class="border border-bottom"></span>
+                            <span class="border border-left"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm sm:rounded-lg menu">
+                    <div class="p-4 text-center text-gray-900 dark:text-gray-100">
+                        <div class="icon bg-primary bg-gradient p-2 rounded-full">
+                            <i class="bi bi-person-x-fill text-white text-3xl"></i>
+                        </div>
+                        <h2 class="text-xl font-semibold mt-2">Borrar Perfiles</h2>
+                        <p class="mt-2 mb-5">Eliminar perfiles de usuarios no deseados.</p>
+                        <a href="{{route('admin.borrar-usuarios')}}" class="btn btn-primary">Ir <i class="bi bi-chevron-compact-right"></i>
+                            <span class="border border-top"></span>
+                            <span class="border border-right"></span>
+                            <span class="border border-bottom"></span>
+                            <span class="border border-left"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm sm:rounded-lg menu">
+                    <div class="p-4 text-center text-gray-900 dark:text-gray-100">
+                        <div class="icon bg-primary bg-gradient p-2 rounded-full">
+                            <i class="bi bi-eye-fill text-white text-3xl"></i>
+                        </div>
+                        <h2 class="text-xl font-semibold mt-2">Ver Visitas</h2>
+                        <p class="mt-2 mb-5">Ver estadísticas de visitas al sitio web.</p>
+                        <a href="{{route('admin.numero-visitas')}}" class="btn btn-primary">Ir <i class="bi bi-chevron-compact-right"></i>
+                            <span class="border border-top"></span>
+                            <span class="border border-right"></span>
+                            <span class="border border-bottom"></span>
+                            <span class="border border-left"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            @endif
+
+
         </div>
-        @endif
-    </div>
 
 </x-app-layout>

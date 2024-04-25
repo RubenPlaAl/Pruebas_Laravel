@@ -70,7 +70,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Europe/Madrid',
 
     /*
     |--------------------------------------------------------------------------
@@ -83,7 +83,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'es',
 
     /*
     |--------------------------------------------------------------------------
@@ -169,6 +169,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\FormatTimeServiceProvider::class,
+        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
+        Shetabit\Visitor\Provider\VisitorServiceProvider::class,
 
     ])->toArray(),
 
@@ -184,7 +186,9 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
+        'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
         // 'Example' => App\Facades\Example::class,
+        'Visitor' => Shetabit\Visitor\Facade\Visitor::class,
         'FormatTime' => App\Helpers\FormatTime::class
     ])->toArray(),
 
