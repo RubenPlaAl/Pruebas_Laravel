@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex items-center justify-center">
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight m-0">
-                {{ __('Detalles del producto') }}
+                {{ __('Game details') }}
             </h2>
         </div>
     </x-slot>
@@ -34,13 +34,13 @@
                         @csrf
                         <input type="hidden" name="id" value="{{$juego->id}}">
                         <x-primary-button class="mt-5" type>
-                            {{ __('Añadir al carrito') }}
+                            {{ __('Add to Cart') }}
                         </x-primary-button>
                     </form>
                     @else
                     <div class="mt-5 mt-5 flex justify-center">
                     <x-primary-button class="deletebtn" type>
-                        {{ __('No hay stock') }}
+                        {{ __('Out of Stock') }}
                     </x-primary-button>
 
                     </div>

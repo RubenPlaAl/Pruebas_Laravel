@@ -7,14 +7,16 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactFormSubmitted;
 
+
 class ContactController extends Controller
 {
     public function sendContactEmail(Request $request)
     {
         $name = $request->input('name');
-        $email = Auth::user()->email; // Obtener el correo electrónico del usuario autenticado
-        $pregunta = $request->input('pregunta');
-    
+        $email = Auth::user()->email; 
+        $pregunta = $request->input('question');
+
+      
         // Envía el correo electrónico
         Mail::to('plar.hub.store@gmail.com')->send(new ContactFormSubmitted($name, $email, $pregunta));
     

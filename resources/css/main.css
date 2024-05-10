@@ -301,7 +301,7 @@ background-color: #888;
 Boton para ir a las paginas principales
 **/
 .btn10{
-  padding: 15px 100px;
+  padding: 15px 50px;
   margin:10px 4px;
   color: #fff;
   font-family: sans-serif;
@@ -391,13 +391,76 @@ width: 116%;
 opacity:1;
 width: 120%;
 }
-
 /* 
 Fin del boton para ir a las paginas principales
 **/
 
-@media screen and (max-width: 300px) {
+.carousel {
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-inner {
+  display: flex;
+}
+
+.carousel-item {
+  flex: 0 0 auto;
+  display: none;
+}
+
+.carousel-item.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4em;
+}
+
+.carousel img {
+  width: 10em;
+  height: 10em;
+}
+
+.carousel-item image {
+  max-width: 100%;
+  max-height: auto;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 2em;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.carousel-control-prev {
+  left: 10px;
+}
+
+.carousel-control-next {
+  right: 10px;
+}
+
+
+@media screen and (max-width: 600px) {
   .cancelbtn, .deletebtn {
     width: 100%;
   }
+  .carousel-item.active {
+    display: flex;
+    flex-direction: column !important;
+  }
+
+  .carousel-item.active img {
+    width: 10em; 
+    height: 10em; 
+    margin-bottom: 1em; 
+  }
+
 }

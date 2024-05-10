@@ -4,7 +4,7 @@
 <x-slot name="header">
     <div class="flex justify-between items-center">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Ver Productos') }}
+            {{ __('View Products') }}
         </h2>
         <a href="{{route("store.checkout")}}">
         <div class="cart flex items-center justify-center bg-gray-200 p-2 rounded-full">
@@ -21,8 +21,8 @@
     <section>
         <div class="hero-image">
             <div class="hero-text">
-                <h2>Bienvenido</h2>
-                <p>¡Sumérgete en la aventura! Encuentra tus juegos favoritos aquí.</p>
+                <h2>{{__("Welcome")}}</h2>
+                <p>{{__("Dive into the adventure! Find your favorite games here.")}}</p>
             </div>
         </div>
     </section>

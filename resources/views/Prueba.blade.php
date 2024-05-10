@@ -16,27 +16,35 @@
     <div class="hero">
         <div class="overlay"></div>
         <div class="content">
-            <h1>BIENVENIDOS A PLAR HUB</h1>
+            <h1>{{__("WELCOME TO PLAR HUB")}}</h1>
             <hr>
             <x-application-logo class="block h-6 w-auto fill-current text-gray-800 dark:text-gray-200" />
+        
 
         </div>
-        
+
         <div class="top-right" >
             @if (Route::has('login'))
             <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10 log">
                 @auth
-                <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
+                <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">{{__("Dashboard")}}</a>
                 @else
-                <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
+                <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">{{__("Log in")}}</a>
 
                 @if (Route::has('register'))
-                <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
+                <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">{{__("Register")}}</a>
                 @endif
                 @endauth
             </div>
             @endif
+            <div class="botton-right ">
+        <div class="weather">
+        @include("includes.weather") 
+       </div>
         </div>
+        </div>
+   
+    </div>
     </div>
     <section  class="h-screen w-screen" style="background-image: url('./storage/Fondo-Dashboard.jpg'); background-size: cover; background-position: center;">
     <!-- Grid section -->

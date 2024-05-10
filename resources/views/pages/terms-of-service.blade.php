@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex items-center justify-center">
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                {{ __('Términos de Servicio') }}
+                {{ __('Terms of Service') }}
             </h2>
         </div>
     </x-slot>
@@ -11,35 +11,35 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6 pt-5 w-screen mb-5" style="background-image: url('./storage/Fondo-Pages.jpg'); background-size: cover; background-position: center;">
             <div class="p-6 bg-white dark:bg-gray-800 shadow-md rounded-lg">
                 <p class="text-lg text-gray-800 dark:text-gray-200">
-                    Estos <span class="font-semibold">términos de servicio</span> gobiernan el uso de nuestro sitio web por parte de los usuarios. Al acceder y utilizar este sitio web, aceptas estos términos y condiciones en su totalidad.
+                    {{ __('These')}} <span class="font-semibold">{{ __('terms of service')}}</span> {{ __('govern the use of our website by users. By accessing and using this website, you agree to these terms and conditions in full.')}}
                 </p>
 
                 <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mt-4">
-                    Uso del sitio web
+                    {{ __('Use of the website') }}
                 </h3>
 
                 <p class="text-lg text-gray-800 dark:text-gray-200">
-                    Estás autorizado a utilizar este sitio web para fines legales y de acuerdo con estos términos de servicio. No debes utilizar este sitio web de ninguna manera que cause o pueda causar daño al sitio web o a terceros.
+                    {{ __('You are authorized to use this website for lawful purposes and in accordance with these terms of service. You must not use this website in any way that causes or may cause damage to the website or third parties.') }}
                 </p>
 
                 <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mt-4">
-                    Contenido
+                    {{ __('Content') }}
                 </h3>
 
                 <p class="text-lg text-gray-800 dark:text-gray-200">
-                    El contenido de este sitio web es proporcionado únicamente para información general y no constituye asesoramiento profesional. Nos reservamos el derecho de modificar o eliminar cualquier contenido sin previo aviso.
+                    {{ __("The content of this website is provided solely for general information and does not constitute professional advice. We reserve the right to modify or delete any content without prior notice.")}}
                 </p>
 
                 <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mt-4">
-                    Enlaces a otros sitios web
+                    {{ __('Links to other websites') }}
                 </h3>
 
                 <p class="text-lg text-gray-800 dark:text-gray-200">
-                    Este sitio web puede contener enlaces a sitios web de terceros que no están bajo nuestro control. No asumimos ninguna responsabilidad por el contenido o las políticas de privacidad de estos sitios web de terceros.
+                    {{ __('This website may contain links to third-party websites that are not under our control. We assume no responsibility for the content or privacy policies of these third-party websites.')}}
                 </p>
 
                 <p class="text-lg text-gray-800 dark:text-gray-200 mt-4">
-                    Si tienes alguna pregunta sobre nuestros términos de servicio, no dudes en <a href="{{ route('contact') }}" class="text-blue-500 hover:underline">contactarnos</a>.
+                    {{ __('If you have any questions about our terms of service, feel free to ')}}<a href="{{ route('contact') }}" class="text-blue-500 hover:underline">{{ __('contact us')}}</a>.
                 </p>
             </div>
         </div>

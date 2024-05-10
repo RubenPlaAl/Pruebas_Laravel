@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex items-center justify-center">
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight m-0">
-                {{ __('Comentar Tema') }}
+                {{ __('Discuss Topic') }}
             </h2>
         </div>
     </x-slot>
@@ -50,17 +50,17 @@
 
                                 @if(Auth::user() && Auth::user()->id == $image->user->id || Auth::user()->role == 'admin')
 
-                                <x-primary-button onclick="document.getElementById('id01').style.display='block'">Borrar publicación</x-primary-button>
+                                <x-danger-button onclick="document.getElementById('id01').style.display='block'">{{__("Delete Post")}}</x-danger-button>
                                 <div id="id01" class="modal">
                                     <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
                                     <form class="modal-content" action="/action_page.php">
                                         <div class="container">
-                                            <h1>Borrar publicacion</h1>
-                                            <p class="seguro">Estas seguro de que quieres borrar esta publicación?</p>
+                                            <h1>{{__("Delete Post")}}</h1>
+                                            <p class="seguro">{{__("Are you sure you want to delete this post?")}}</p>
 
                                             <div class="btn-group">
-                                                <x-primary-button type="button" class="cancelbtn">Cancelar</x-primary-button>
-                                                <a href="{{ route('image.delete', ['id' => $image->id ])}}"> <x-primary-button type="button" class="deletebtn">Borrar
+                                                <x-primary-button type="button" class="cancelbtn">{{__("Cancel")}}</x-primary-button>
+                                                <a href="{{ route('image.delete', ['id' => $image->id ])}}"> <x-primary-button type="button" class="deletebtn">{{__("Delete")}}
                                                     </x-primary-button></a>
                                             </div>
                                         </div>
@@ -70,14 +70,14 @@
                                 @endif
                                 @if(Auth::user() && Auth::user()->id == $image->user->id)
 
-                                <a href="{{ route('image.edit', ['id' => $image->id ])}}"> <x-primary-button type="button">Editar
+                                <a href="{{ route('image.edit', ['id' => $image->id ])}}"> <x-primary-button type="button">{{__("Edit")}}
                                     </x-primary-button></a>
                                 @endif
 
 
                                 <div class="clearfix"></div>
                                 <div class="comments">
-                                    <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100 mt-5">Opiniones ({{count($image->comments)}})</h2>
+                                    <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100 mt-5">{{__("Opinions")}} ({{count($image->comments)}})</h2>
                                     <hr>
                                     @foreach($image->comments as $comment)
                                     <div class="comment bg-gray-100 dark:bg-gray-700 p-3 sm:p-6 mb-4 sm:mb-8 rounded-lg shadow">
@@ -93,11 +93,11 @@
                                         </div>
 
                                         @if (Auth::check() && ($comment->user_id == Auth::user()->id || $comment->image->user_id == Auth::user()->id || Auth::user()->role == 'admin'))
-                                        <x-primary-button class="mt-5">
+                                        <x-danger-button class="mt-5">
                                             <a href="{{ route('comment.delete', ['id' => $comment->id])}}">
-                                                Eliminar
+                                                {{__("Delete")}}
                                             </a>
-                                        </x-primary-button>
+                                        </x-danger-button>
                                         @endif
 
                                     </div>
@@ -111,7 +111,7 @@
                                             <textarea class="form-control mt-5 w-full" name="content" id="content" required cols="30" rows="5" style="background-color: gray;"></textarea>
                                         </p>
                                         <x-primary-button class="btn btn-dark mt-5" type="submit">
-                                            Enviar
+                                            {{__("Send")}}
                                         </x-primary-button>
                                     </form>
                                 </div>

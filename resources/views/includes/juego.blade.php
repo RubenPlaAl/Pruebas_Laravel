@@ -12,7 +12,7 @@
         </div>
         <!-- Descripción del juego -->
         <div class="mt-4 mb-4">
-            <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">Descripción:</h2>
+            <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">{{__("Description")}}</h2>
             <p class="text-gray-700 dark:text-gray-300">{{ $juego->descripcion }}</p>
         </div>
 
@@ -20,7 +20,7 @@
         <div class="flex justify-center">
             <a href="{{route('store.detalles', ['id' => $juego->id])}}">
                 <x-primary-button>
-                    {{ __('Detalles del juego') }}
+                    {{ __('Game details') }}
                 </x-primary-button>
             </a>
         </div>

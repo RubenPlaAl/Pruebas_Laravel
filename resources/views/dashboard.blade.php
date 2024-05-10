@@ -14,15 +14,16 @@
                     @if(auth()->user()->role === 'admin')
                     <div>
                         <!-- Contenido exclusivo para administradores -->
-                        <h2 class="text-2xl font-semibold">Bienvenido, Administrador.</h2><br>
+                        <h2 class="text-2xl font-semibold">{{__('Welcome, Administrator')}}</h2><br>
                     </div>
                     @else
                     <div>
                         <!-- Contenido para usuarios normales -->
-                        <h2 class="text-2xl font-semibold">Bienvenido, {{ auth()->user()->name }}.</h2>
+                        <h2 class="text-2xl font-semibold">{{__('Welcome')}}, {{ auth()->user()->name }}.</h2>
                     </div>
                     @endif
                     @endif
+                    @include('includes.language')
                 </div>
             </div>
         </div>
@@ -33,9 +34,9 @@
                     <div class="icon bg-primary bg-gradient p-4 rounded-t-lg">
                         <i class="bi bi-chat-square-fill text-white text-3xl"></i>
                     </div>
-                    <h2 class="text-xl font-semibold mt-4">Favoritos del Foro</h2>
-                    <p class="mt-2 mb-5">Ir a los Temas que te interesan y revisar las opiniones de los demás.</p>
-                    <a href="{{ route('likes') }}" class="btn btn-primary">Ir <i class="bi bi-chevron-compact-right"></i>
+                    <h2 class="text-xl font-semibold mt-4">{{__('Favorites')}}</h2>
+                    <p class="mt-2 mb-5">{{__( "Go to the topics you like, and check the ones others like.")}}</p>
+                    <a href="{{ route('likes') }}" class="btn btn-primary">{{__("Go")}} <i class="bi bi-chevron-compact-right"></i>
                         <span class="border border-top"></span>
                         <span class="border border-right"></span>
                         <span class="border border-bottom"></span>
@@ -48,9 +49,9 @@
                     <div class="icon bg-primary bg-gradient p-4 rounded-t-lg">
                         <i class="bi bi-people-fill text-white text-3xl"></i>
                     </div>
-                    <h2 class="text-xl font-semibold mt-4">Gente</h2>
-                    <p class="mt-2 mb-5">Aquí puedes buscar otras personas.</p>
-                    <a href="{{ route('profile.index') }}" class="btn btn-primary">Ir <i class="bi bi-chevron-compact-right"></i>
+                    <h2 class="text-xl font-semibold mt-4">{{__("People")}}</h2>
+                    <p class="mt-2 mb-5">{{__("Search other people")}}</p>
+                    <a href="{{ route('profile.index') }}" class="btn btn-primary">{{__("Go")}} <i class="bi bi-chevron-compact-right"></i>
                         <span class="border border-top"></span>
                         <span class="border border-right"></span>
                         <span class="border border-bottom"></span>
@@ -63,9 +64,9 @@
                     <div class="icon bg-primary bg-gradient p-4 rounded-t-lg">
                         <i class="bi bi-person-fill text-white text-3xl"></i>
                     </div>
-                    <h2 class="text-xl font-semibold mt-4">Perfil</h2>
-                    <p class="mt-2 mb-5">Aquí está tu perfil personal.</p>
-                    <a href="{{ route('perfil', ['id' => Auth::user()->id]) }}" class="btn btn-primary">Ir <i class="bi bi-chevron-compact-right"></i>
+                    <h2 class="text-xl font-semibold mt-4">{{__("Profile")}}</h2>
+                    <p class="mt-2 mb-5">{{__("Here is your Personal Profile")}}</p>
+                    <a href="{{ route('perfil', ['id' => Auth::user()->id]) }}" class="btn btn-primary">{{__("Go")}}  <i class="bi bi-chevron-compact-right"></i>
                         <span class="border border-top"></span>
                         <span class="border border-right"></span>
                         <span class="border border-bottom"></span>
@@ -81,7 +82,7 @@
                 <div class="p-6 text-gray-900 text-center dark:text-gray-100">
                     @if(auth()->user()->role === 'admin')
                     <div>
-                        <h2 class="text-2xl font-semibold">Opciones de Administrador</h2>
+                        <h2 class="text-2xl font-semibold">{{__("Admin Options")}}</h2>
                     </div>
                     @endif
                 </div>
@@ -93,9 +94,9 @@
                         <div class="icon bg-primary bg-gradient p-2 rounded-full">
                             <i class="bi bi-plus-circle-fill text-white text-3xl"></i>
                         </div>
-                        <h2 class="text-xl font-semibold mt-2">Agregar Productos</h2>
-                        <p class="mt-2 mb-5">Añadir nuevos productos al catálogo de la tienda.</p>
-                        <a href="{{ route('store.crear')}}" class="btn btn-primary">Ir <i class="bi bi-chevron-compact-right"></i>
+                        <h2 class="text-xl font-semibold mt-2">{{__("Add Products")}}</h2>
+                        <p class="mt-2 mb-5">{{__("Add products to the shop")}}</p>
+                        <a href="{{ route('store.crear')}}" class="btn btn-primary">{{__("Go")}}<i class="bi bi-chevron-compact-right"></i>
                             <span class="border border-top"></span>
                             <span class="border border-right"></span>
                             <span class="border border-bottom"></span>
@@ -108,9 +109,9 @@
                         <div class="icon bg-primary bg-gradient p-2 rounded-full">
                             <i class="bi bi-trash-fill text-white text-3xl"></i>
                         </div>
-                        <h2 class="text-xl font-semibold mt-2">Eliminar Publicaciones o Comentarios</h2>
-                        <p class="mt-2 mb-5">Eliminar publicaciones o comentarios inapropiados o spam.</p>
-                        <a href="{{ route('image.show') }}" class="btn btn-primary">Ir <i class="bi bi-chevron-compact-right"></i>
+                        <h2 class="text-xl font-semibold mt-2">{{__("Delete Posts or Comments")}}</h2>
+                        <p class="mt-2 mb-5">{{__( "Delete inappropriate or spam posts or comments.")}}</p>
+                        <a href="{{ route('image.show') }}" class="btn btn-primary">{{__("Go")}} <i class="bi bi-chevron-compact-right"></i>
                             <span class="border border-top"></span>
                             <span class="border border-right"></span>
                             <span class="border border-bottom"></span>
@@ -123,9 +124,9 @@
                         <div class="icon bg-primary bg-gradient p-2 rounded-full">
                             <i class="bi bi-person-x-fill text-white text-3xl"></i>
                         </div>
-                        <h2 class="text-xl font-semibold mt-2">Borrar Perfiles</h2>
-                        <p class="mt-2 mb-5">Eliminar perfiles de usuarios no deseados.</p>
-                        <a href="{{route('admin.borrar-usuarios')}}" class="btn btn-primary">Ir <i class="bi bi-chevron-compact-right"></i>
+                        <h2 class="text-xl font-semibold mt-2">{{__("Delete Profiles")}}</h2>
+                        <p class="mt-2 mb-5">{{__( "Delete unwanted user profiles, also you can create a PDF of the users")}}</p>
+                        <a href="{{route('admin.borrar-usuarios')}}" class="btn btn-primary">{{__("Go")}} <i class="bi bi-chevron-compact-right"></i>
                             <span class="border border-top"></span>
                             <span class="border border-right"></span>
                             <span class="border border-bottom"></span>
@@ -138,9 +139,9 @@
                         <div class="icon bg-primary bg-gradient p-2 rounded-full">
                             <i class="bi bi-eye-fill text-white text-3xl"></i>
                         </div>
-                        <h2 class="text-xl font-semibold mt-2">Ver Visitas</h2>
-                        <p class="mt-2 mb-5">Ver estadísticas de visitas al sitio web.</p>
-                        <a href="{{route('admin.numero-visitas')}}" class="btn btn-primary">Ir <i class="bi bi-chevron-compact-right"></i>
+                        <h2 class="text-xl font-semibold mt-2">{{__("View Visits")}}</h2>
+                        <p class="mt-2 mb-5">{{__("View website visit statistics.")}}</p>
+                        <a href="{{route('admin.numero-visitas')}}" class="btn btn-primary">{{__("Go")}}<i class="bi bi-chevron-compact-right"></i>
                             <span class="border border-top"></span>
                             <span class="border border-right"></span>
                             <span class="border border-bottom"></span>
@@ -149,10 +150,7 @@
                     </div>
                 </div>
             </div>
-
             @endif
-
-
         </div>
 
 </x-app-layout>

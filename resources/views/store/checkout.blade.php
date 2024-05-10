@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex items-center justify-center">
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                {{ __('Carrito') }}
+                {{ __('Cart') }}
             </h2>
         </div>
     </x-slot>
@@ -14,11 +14,11 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900 dark:text-gray-100 text-center">
-                        {{ __("No hay productos en el carrito.") }}
+                        {{ __("There are no products in the cart") }}
                     </div>
                 </div>
             </div>
-
+           
             @else
             <div class="max-w-8xl mx-auto md:px-0 sm:px-6 lg:px-0 overflow-x-auto">
 
@@ -26,22 +26,22 @@
                     <thead class="bg-gray-50 dark:bg-gray-800">
                         <tr>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Caratula
+                                {{ __("Cover") }}
                             </th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Nombre
+                                {{ __("Name") }}
                             </th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Precio
+                                {{ __("Price") }}
                             </th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Cantidad
+                                {{ __("Quantity") }}
                             </th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Importe
+                                {{ __("Amount") }}
                             </th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Eliminar del carrito
+                                {{ __("Remove from cart") }}
                             </th>
                         </tr>
                     </thead>
@@ -72,7 +72,7 @@
                                     @csrf
                                     <input type="hidden" name="rowId" value="{{$item->rowId}}">
                                     <x-primary-button class="mt-5 ml-5 deletebtn" type>
-                                        {{ __('Quitar X') }}
+                                        {{ __("Remove X") }}
                                     </x-primary-button>
                                 </form>
                             </td>
@@ -82,7 +82,7 @@
                         <tr>
                             <td colspan="3"></td>
                             <td class="px-6 py-4 whitespace-nowrap text-right" colspan="2">
-                                <span class="text-sm text-gray-900 dark:text-gray-100 font-semibold">Subtotal:</span>
+                                <span class="text-sm text-gray-900 dark:text-gray-100 font-semibold">{{ __("Subtotal") }}:</span>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right">
                                 <span class="text-sm text-gray-900 dark:text-gray-100 font-semibold">{{ Cart::subtotal() }}€</span>
@@ -91,7 +91,7 @@
                         <tr>
                             <td colspan="3"></td>
                             <td class="px-6 py-4 whitespace-nowrap text-right" colspan="2">
-                                <span class="text-sm text-gray-900 dark:text-gray-100 font-semibold">Tax:</span>
+                                <span class="text-sm text-gray-900 dark:text-gray-100 font-semibold">{{ __("Tax") }}:</span>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right">
                                 <span class="text-sm text-gray-900 dark:text-gray-100 font-semibold">{{ Cart::tax() }}€</span>
@@ -100,7 +100,7 @@
                         <tr>
                             <td colspan="3"></td>
                             <td class="px-6 py-4 whitespace-nowrap text-right" colspan="2">
-                                <span class="text-sm text-gray-900 dark:text-gray-100 font-semibold">Total:</span>
+                                <span class="text-sm text-gray-900 dark:text-gray-100 font-semibold">{{ __("Total") }}:</span>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right">
                                 <span class="text-sm text-gray-900 dark:text-gray-100 font-semibold">{{ Cart::total() }}€</span>
@@ -113,13 +113,13 @@
                     <form action="{{ route('cart.comprar') }}" method="post">
                         @csrf
                         <x-primary-button type="submit" class="comprar">
-                            {{ __('Comprar') }} <i class="bi bi-box ml-2"></i>
+                            {{ __("Buy") }} <i class="bi bi-box ml-2"></i>
                         </x-primary-button>
                     </form>
 
                     <a href="{{route('cart.clear')}}">
                         <x-primary-button class="vaciarCarro" type>
-                            {{ __('Vaciar Carrito') }} <i class="bi bi-cart-x ml-2"></i>
+                            {{ __("Empty Cart") }} <i class="bi bi-cart-x ml-2"></i>
                         </x-primary-button>
                     </a>
                 </div>

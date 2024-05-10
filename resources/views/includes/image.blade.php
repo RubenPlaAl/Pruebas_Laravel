@@ -40,11 +40,11 @@
                 <i class="bi bi-star-fill  fs-4 mr-2 btn-dislike" data-id="{{$image->id}}"></i>
                 @endif
                 {{count($image->likes)}}
-                <span>Interested</span>
+                <span>{{__("Interested")}}</span>
             </div>
             <a href="{{ route('image.detail', ['id' => $image->id])}}">
                 <x-primary-button class="mt-5">
-                    Opiniones({{count($image->comments)}})
+                    {{__("Opinions")}}({{count($image->comments)}})
                 </x-primary-button>
             </a>
         </div>

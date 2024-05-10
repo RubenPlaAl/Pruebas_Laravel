@@ -14,9 +14,9 @@
         
         <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 text-gray-900 dark:text-gray-100 text-center">
-                <p class="mb-6">¿Quieres subir un Tema?</p>
+                <p class="mb-6">{{__( "Want to post a Topic?")}}</p>
                 <a href="{{route('image.create')}}" :active="request()->routeIs('forum')" class="btn10">
-                        <span>Subir Tema</span>
+                        <span>{{__("Upload Topic")}}</span>
                         <div class="transition"></div>
                     </a>
             </div>
@@ -26,10 +26,10 @@
     <div class="w-1/2 mx-4">
         <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 text-gray-900 dark:text-gray-100 text-center">
-                <p class="mb-6">¿Quieres ver los temas del foro?</p>
+                <p class="mb-6">{{__( "View the topics?")}}</p>
            
                 <a href="{{route('image.show')}}" :active="request()->routeIs('forum')" class="btn10">
-                        <span>Ver Temas</span>
+                        <span>{{__("View Topics")}}</span>
                         <div class="transition"></div>
                     </a>
             </div>

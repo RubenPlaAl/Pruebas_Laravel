@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -121,4 +122,15 @@ class ProfileController extends Controller
             ]);
         }
     }
+    public function language(Request $request)
+    {
+        $request->validate([
+            'language' => 'required|string|in:en,es,fr', 
+        ]);
+
+        Session::put('locale', $request->language);
+
+        return back();
+    }
+
 }

@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex items-center justify-center">
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                {{ __('Nuevo producto a añadir') }}
+                {{ __("New product to add") }}
             </h2>
         </div>
     </x-slot>
@@ -13,17 +13,17 @@
                 <div class="max-w-xl">
                     <div class="pt-5">
                         <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-                            {{ __('Nuevo Juego') }}
+                            {{ __('New Game') }}
                         </h2>
                         <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                            {{ __("Selecciona la caratula del juego, nombre, descripción, precio y stock.") }}
+                            {{ __("Select the game cover, name, description, price, and stock.") }}
                         </p>
                     </div>
                     <form action="{{route('store.save')}}" method="POST" enctype="multipart/form-data" class="mt-6 space-y-6">
                         @csrf
 
                         <div>
-                            <x-input-label for="image_path" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Caratula</x-input-label>
+                            <x-input-label for="image_path" class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{__("Cover")}}</x-input-label>
                             <x-text-input id="image_path" name="image_path" type="file" class="mt-1 block w-full" required />
                             @error('image')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
@@ -31,7 +31,7 @@
                         </div>
 
                         <div>
-                            <x-input-label for="nombre" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Nombre del juego</x-input-label>
+                            <x-input-label for="nombre" class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{__("Game Name")}}</x-input-label>
                             <x-text-input id="nombre" name="nombre" type="text" class="mt-1 block w-full" required />
                             @error('nombre')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
@@ -39,7 +39,7 @@
                         </div>
 
                         <div>
-                            <x-input-label for="descripcion" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Descripción</x-input-label>
+                            <x-input-label for="descripcion" class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{__("Description")}}</x-input-label>
                             <x-text-input id="descripcion" name="descripcion" rows="4" class="mt-1 block w-full" required />
                             @error('descripcion')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
@@ -47,7 +47,7 @@
                         </div>
 
                         <div>
-                            <x-input-label for="precio" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Precio</x-input-label>
+                            <x-input-label for="precio" class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{__("Price")}}</x-input-label>
                             <x-text-input id="precio" name="precio" type="number" class="mt-1 block w-full" min="0" step="0.01" required />
                             @error('precio')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
@@ -64,7 +64,7 @@
 
                         <div class="flex items-center gap-4">
                             <x-primary-button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                {{ __('Subir Producto') }}
+                                {{ __("Upload Product") }}
                             </x-primary-button>
                         </div>
                     </form>

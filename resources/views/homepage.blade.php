@@ -64,13 +64,13 @@
                         </a>
                     </div>
                     <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mt-4">Plar Hub</h1>
-                    <p class="text-lg text-gray-900 dark:text-gray-100 mb-4">Bienvenido a Plar Hub, la mejor página para enterarte de todas las novedades del Mundo de los Videojuegos, además de poder comprar cualquier juego cómodamente desde nuestra tienda. Todo lo que necesitas en un mismo lugar.</p>
+                    <p class="text-lg text-gray-900 dark:text-gray-100 mb-4">{{__("Welcome to Plar Hub, the best page to find out about all the news in the World of Video Games, as well as being able to buy any game comfortably from our store. Everything you need in one place.")}}</p>
                     <div class="mt-4">
                     <a href="{{route('forum')}}" :active="request()->routeIs('store')" class="btn10">
-                        <span>Ir al Foro</span>
+                        <span>{{__("Go to Forum")}}</span>
                         <div class="transition"></div>
                     </a>                        <a href="{{route('store')}}" :active="request()->routeIs('store')" class="btn10">
-                        <span>Ir a la tienda</span>
+                        <span>{{__("Go to Store")}}</span>
                         <div class="transition"></div>
                     </a>                    </div>
                 </div>

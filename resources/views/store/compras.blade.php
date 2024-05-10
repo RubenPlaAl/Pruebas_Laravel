@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex items-center justify-center">
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight m-0">
-                {{ __('Pedidos Realizados') }}
+                {{ __('Completed Orders') }}
             </h2>
         </div>
     </x-slot>
@@ -12,7 +12,7 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 h-screen">
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900 dark:text-gray-100 text-center">
-                        {{ __("No has comprado nada todavia, ve a la tienda y no te pierdas nuestros geniales precios.") }}
+                        {{ __("You haven't bought anything yet, go to the store and don't miss out on our great prices.") }}
                     </div>
                 </div>
             </div>
@@ -24,11 +24,11 @@
             @foreach ($pedidos as $pedido)
             <div class="bg-white dark:bg-gray-900 shadow-lg rounded-lg mb-4">
                 <div class="px-6 py-4">
-                    <h2 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">Pedido {{ $contador }}</h2>
-                    <p class="text-gray-600 dark:text-gray-400">Fecha del pedido: {{ $pedido->created_at }}</p>
+                    <h2 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">{{__("Order")}} {{ $contador }}</h2>
+                    <p class="text-gray-600 dark:text-gray-400">{{__("Order date")}} {{ $pedido->created_at }}</p>
                 </div>
                 <div class="border-t border-gray-200 dark:border-gray-700 px-6 py-4">
-                    <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">Ítems del pedido:</h3>
+                    <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">{{__("Order Items")}}:</h3>
                     <div class="grid grid-cols-3 gap-4">
                         @foreach ($pedido->items as $item)
                         <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4">

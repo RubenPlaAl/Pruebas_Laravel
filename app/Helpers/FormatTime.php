@@ -1,13 +1,14 @@
 <?php
+
 namespace App\Helpers;
-  
+
 use Illuminate\Support\Facades\DB;
-  
+
 class FormatTime {
  
     public static function LongTimeFilter($date) {
         if ($date == null) {
-            return "Sin fecha";
+            return __("Without date");
         }
  
         $start_date = $date;
@@ -19,50 +20,50 @@ class FormatTime {
                     if ($since_start->h == 0) {
                         if ($since_start->i == 0) {
                             if ($since_start->s == 0) {
-                                $result = $since_start->s . ' segundos';
+                                $result = $since_start->s . ' ' . __("seconds ago");
                             } else {
                                 if ($since_start->s == 1) {
-                                    $result = $since_start->s . ' segundo';
+                                    $result = $since_start->s . ' ' . __("second ago");
                                 } else {
-                                    $result = $since_start->s . ' segundos';
+                                    $result = $since_start->s . ' ' . __("seconds ago");
                                 }
                             }
                         } else {
                             if ($since_start->i == 1) {
-                                $result = $since_start->i . ' minuto';
+                                $result = $since_start->i . ' ' . __("minute ago");
                             } else {
-                                $result = $since_start->i . ' minutos';
+                                $result = $since_start->i . ' ' . __("minutes ago");
                             }
                         }
                     } else {
                         if ($since_start->h == 1) {
-                            $result = $since_start->h . ' hora';
+                            $result = $since_start->h . ' ' . __("hour ago");
                         } else {
-                            $result = $since_start->h . ' horas';
+                            $result = $since_start->h . ' ' . __("hours ago");
                         }
                     }
                 } else {
                     if ($since_start->d == 1) {
-                        $result = $since_start->d . ' día';
+                        $result = $since_start->d . ' ' . __("day ago");
                     } else {
-                        $result = $since_start->d . ' días';
+                        $result = $since_start->d . ' ' . __("days ago");
                     }
                 }
             } else {
                 if ($since_start->m == 1) {
-                    $result = $since_start->m . ' mes';
+                    $result = $since_start->m . ' ' . __("month ago");
                 } else {
-                    $result = $since_start->m . ' meses';
+                    $result = $since_start->m . ' ' . __("months ago");
                 }
             }
         } else {
             if ($since_start->y == 1) {
-                $result = $since_start->y . ' año';
+                $result = $since_start->y . ' ' . __("year ago");
             } else {
-                $result = $since_start->y . ' años';
+                $result = $since_start->y . ' ' . __("years ago");
             }
         }
  
-        return "Hace " . $result;
+        return __("Since ") . $result;
     }
 }

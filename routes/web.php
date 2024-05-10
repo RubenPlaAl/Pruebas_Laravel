@@ -12,6 +12,8 @@ use App\Http\Controllers\NumeroVisitasController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PedidosController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\GalleryController;
+
 
 
 
@@ -39,6 +41,9 @@ Route::middleware(['log.visits'])->group(function () {
     Route::get('/homepage', function () {
         return view('homepage');
     })->middleware(['auth', 'verified'])->name('homepage');
+
+    Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery');
+
 });
 
 //RUTAS DEL FOOTER DE POLITICA Y PRIVACIDAD ETC
@@ -65,6 +70,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/profile',  [ProfileController::class, 'image_update'])->name('profile.image');
     Route::get('/perfil/{id}',  [ProfileController::class, 'perfil'])->name('perfil');
     Route::get('/profiles/{search?}', [ProfileController::class, 'index'])->name('profile.index');
+    Route::post('/language/set', [ProfileController::class, 'language'])->name('language.set');
 });
 
 require __DIR__ . '/auth.php';
@@ -97,12 +103,13 @@ Route::middleware('auth')->group(function () {
 });
 
 //RUTAS DE LA TIENDA
+Route::middleware('auth')->group(function () {
 Route::post('/store/save',  [StoreController::class, 'save'])->name('store.save');
 Route::get('/store/show', [StoreController::class, 'show'])->name('store.show');
 Route::get('/store/file/{filename}', [StoreController::class, 'getImage'])->name('store.file');
 Route::get('/store/detalles{id}', [StoreController::class, 'detail'])->name('store.detalles');
 Route::get('store/compras', [PedidosController::class, 'compras'])->name('store.compras');
-
+});
 
 //RUTAS DEL CARRITO/CART
 Route::middleware('auth')->group(function () {
@@ -118,10 +125,15 @@ Route::middleware(['auth', 'admin', AdminMiddleware::class])->group(function () 
     // Ruta para listar y borrar usuarios
     Route::get('/admin/borrar-usuarios', [AdminController::class, 'mostrarUsuarios'])->name('admin.borrar-usuarios');
     Route::delete('/admin/users/{id}', [AdminController::class, 'destroy'])->name('admin.users.destroy');
+     //Ruta para crear un PDF con el listado de usuarios
+     Route::get('/admin/report', [AdminController::class, 'report'])->name('admin.report');
     // Ruta para crear tiendas, accesible solo para administradores
     Route::get('/store/crear', [StoreController::class, 'crear'])->name('store.crear');
     //Ruta para las visitas
     Route::get('/numero-visitas', [NumeroVisitasController::class, 'mostrar'])
         ->name('admin.numero-visitas')
         ->middleware('log.visits');
+    //El Super admin puedes cambiar el valor de admin de los demas
+    Route::put('/admin/toggle-admin/{id}', [AdminController::class, 'toggleAdmin'])->name('admin.toggle-admin');
+    
 });
